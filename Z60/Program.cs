@@ -12,22 +12,22 @@ int arrayMaxValue = 100;     // Максимальное значение эле
 int arrayMinValue = 10;      // Минимальное значение элемента в массиве
 int arraySize = 2;           // Размерность массива
 int[,,] array = new int[arraySize, arraySize, arraySize];   // Создаём трёхмерный массив
+int[] tempArray = new int[arraySize * arraySize * arraySize]; // Создаём временный массив
 FillArray();                 // Запуск функции заполнения массива
 ShowIndexArray();            // Запуск функции вывода массива с индексом каждого элемента
 
 
 void FillArray()             // Функция заполнения массива случайными уникальными числами
 {
-    int[] Array = new int[arraySize * arraySize * arraySize];
     int temp;
-    for (int i = 0; i < Array.Length; i++) 
+    for (int i = 0; i < tempArray.Length; i++) 
     {
-        while (Array[i] == 0)
+        while (tempArray[i] == 0)
         {
             temp = new Random().Next(arrayMinValue, arrayMaxValue);
-            if (Array.IndexOf(Array, temp, i) == -1)
+            if (Array.IndexOf(tempArray, temp, i) == -1)
             {
-                Array[i] = temp;
+                tempArray[i] = temp;
             }
         }
     }
@@ -42,7 +42,7 @@ void ShowIndexArray()       // Функция вывода массива с и�
         {
             for (int arrayDepth3 = 0; arrayDepth3 < arraySize; arrayDepth3++)
             {
-                array[arrayDepth1, arrayDepth2, arrayDepth3] = Array[count];
+                array[arrayDepth1, arrayDepth2, arrayDepth3] = tempArray[count];
                 count++;
                 Console.WriteLine($"{array[arrayDepth1, arrayDepth2, arrayDepth3]} ({arrayDepth1},{arrayDepth2},{arrayDepth3})");
             }
