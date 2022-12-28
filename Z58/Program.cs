@@ -7,10 +7,10 @@
 18 20
 15 18                           */
 
- Main(args);
+Func(args);
 
 
-static void Main(string[] args)
+static void Func(string[] args)
 {
     Console.WriteLine("Введите размерность первой матрицы: ");
     int[,] A = new int[Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine())];
